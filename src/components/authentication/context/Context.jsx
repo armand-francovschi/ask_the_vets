@@ -1,25 +1,32 @@
 import React, { createContext, useContext, useState } from 'react';
+import { getCurrentUser, logout as logoutService } from '../../services/authService';
 
+// Create context
 const AuthContext = createContext();
 
-export const useAuth = () => useContext(AuthContext);
-
+// Auth provider component
 export const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("authToken") !== null);
+  const [user, setUser] = useState(getCurrentUser()); // Initialize user state from localStorage
+  const isLoggedIn = user !== null;  // Determine if the user is logged in
 
-  const login = () => {
-    localStorage.setItem("authToken", "your-token-value");
-    setIsLoggedIn(true);
+  const login = (token) => {
+    setUser({ email: 'testuser@example.com' }); // Set user based on the token
+    localStorage.setItem("authToken", token);
   };
 
   const logout = () => {
-    localStorage.removeItem("authToken");
-    setIsLoggedIn(false);
+    setUser(null);
+    logoutService(); // Call the service to remove the token from localStorage
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
+};
+
+// Custom hook to use auth context
+export const useAuth = () => {
+  return useContext(AuthContext); // Make sure this is exported correctly
 };

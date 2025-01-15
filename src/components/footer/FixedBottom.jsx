@@ -26,7 +26,7 @@ const FixedBottom = () => {
           <div className="fixed-bottom-right">
             <ul className="social-links">
               <li>
-                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/miru.catalui/" target="_blank" rel="noopener noreferrer">
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
                     alt="Facebook"
@@ -35,7 +35,7 @@ const FixedBottom = () => {
                 </a>
               </li>
               <li>
-                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/mango.miry/" target="_blank" rel="noopener noreferrer">
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
                     alt="Instagram"

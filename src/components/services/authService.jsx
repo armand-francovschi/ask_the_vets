@@ -9,13 +9,12 @@ export const LOCAL_USER = {
   // Function to simulate login
   export const loginUser = (email, password) => {
     // Check if the provided credentials match the local hardcoded credentials
-    // throw new Error('qqqqq credenqweqweqwetials');
     if (email === LOCAL_USER.email && password === LOCAL_USER.password) {
       const token = 'fake-jwt-token'; // Simulated token for testing
       localStorage.setItem("authToken", token);
       return { token }; // Return token like it's coming from an API
     }
-    throw new Error('Invalid credenqweqweqwetials');
+    throw new Error('Invalid credentials'); // Throw an error if credentials do not match
   };
   
   // Get the current authenticated user

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
+import { loginUser } from '../services/authService'; // Import loginUser from authService
 import { useAuth } from './context/Context';  // Import the useAuth hook for context
 import './Login.css';
 
 const Login = () => {
-  const { login } = useAuth(); // Use login function from context
+  const { login } = useAuth(); // Use the login function from context
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -13,12 +14,13 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Simulate validation of credentials (You could use the context or local storage)
-    if (email === "test@example.com" && password === "password123") {
-      login(); // Use context's login method to handle login
+    try {
+      // Use the loginUser function from authService
+      const { token } = loginUser(email, password);
+      login(token); // Pass the token to the context's login method to handle login
       navigate('/'); // Redirect to the homepage after successful login
-    } else {
-      setError('Invalid email or password'); // Set error message if login fails
+    } catch (error) {
+      setError(error.message); // Set error message if login fails
     }
   };
 

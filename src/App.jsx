@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import CardComponent from './components/card/CardComponent';
 import Consultatii from './components/consultatii/Consultatii';
 import Ingrijire from './components/ingrijire/Ingrijire';
@@ -10,7 +10,8 @@ import BlogArticle from './components/blog/BlogArticle';
 import Footer from './components/footer/FixedBottom';
 import Login from './components/authentication/Login';
 import Logout from './components/authentication/Logout';
-import { useAuth } from './components/authentication/context/Context';
+import { AuthProvider, useAuth } from './components/authentication/context/Context';
+
 
 function ScrollToTop() {
   const location = useLocation();
@@ -23,12 +24,16 @@ function ScrollToTop() {
 }
 
 function AppContent() {
-  const { isLoggedIn, logout } = useAuth();
+  const { isLoggedIn, logout } = useAuth(); // Now it has `isLoggedIn`
 
-  const handleLogout = () => {
-    // Confirmation dialog for logout
-    if (window.confirm("Are you sure you want to log out?")) {
-      logout(); // Proceed with logout if confirmed
+   // Function to handle clicking the Log Out button
+   const handleLogoutClick = () => {
+    // Ask for confirmation before logging out
+    const confirmed = window.confirm("Are you sure you want to log out?");
+    
+    if (confirmed) {
+      logout(); // If the user confirms, call the logout function
+      navigate('/login'); // Redirect to the login page after logging out
     }
   };
 
@@ -55,11 +60,11 @@ function AppContent() {
           <Route path="/blog" element={isLoggedIn ? <Blog /> : <Navigate to="/login" />} />
           <Route path="/agenda" element={isLoggedIn ? <Agenda /> : <Navigate to="/login" />} />
           <Route path="/blog/:articleId" element={isLoggedIn ? <BlogArticle /> : <Navigate to="/login" />} />
-          <Route path="/logout" element={<Logout onLogout={handleLogout} />} />
+          <Route path="/logout" element={<Logout onLogout={logout} />} />
         </Routes>
       </main>
       {isLoggedIn && (
-        <button onClick={handleLogout} className="logout-button">
+        <button onClick={handleLogoutClick} className="logout-button">
           Log Out
         </button>
       )}
@@ -69,4 +74,14 @@ function AppContent() {
   );
 }
 
-export default AppContent;
+function App() {
+  return (
+    <AuthProvider> {/* Ensure AuthProvider wraps the app */}
+      <Router>
+        <AppContent />
+      </Router>
+    </AuthProvider>
+  );
+}
+
+export default App;
