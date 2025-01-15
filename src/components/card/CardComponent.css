@@ -92,6 +92,29 @@
   /* Slightly shrink non-hovered cards */
 }
 
+/* Green button for unauthenticated users */
+.green-button {
+  background-color: #28a745;
+  /* Green color */
+  color: white;
+  /* White text */
+  border: none;
+  /* No border */
+  padding: 10px 20px;
+  /* Padding */
+  cursor: pointer;
+  /* Pointer cursor on hover */
+  font-size: 16px;
+  /* Text size */
+  transition: background-color 0.3s ease;
+  /* Smooth transition */
+}
+
+.green-button:hover {
+  background-color: #218838;
+  /* Darker green on hover */
+}
+
 /* Responsive Design: Stack cards in a column on smaller screens */
 @media (max-width: 768px) {
   .card-container {

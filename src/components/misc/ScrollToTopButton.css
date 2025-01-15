@@ -2,28 +2,43 @@
 
 .scroll-to-top-btn {
   position: fixed;
-  top: 30px; /* Position it 30px from the top */
-  left: 50%; /* Horizontally center the button */
-  transform: translateX(-50%); /* Adjust position to truly center it */
-  background-color: #3AB2F9; /* Set background color to #3AB2F9 */
-  color: #000000; /* Text color */
-  font-size: 30px; /* Larger font size for the arrow */
-  width: 60px; /* Button width */
-  height: 60px; /* Button height */
-  border-radius: 12px; /* Rounded corners */
+  top: 30px;
+  /* Position it 30px from the top */
+  left: 50%;
+  /* Horizontally center the button */
+  transform: translateX(-50%);
+  /* Adjust position to truly center it */
+  background-color: #3AB2F9;
+  /* Set background color to #3AB2F9 */
+  color: #000000;
+  /* Text color */
+  font-size: 30px;
+  /* Larger font size for the arrow */
+  width: 60px;
+  /* Button width */
+  height: 60px;
+  /* Button height */
+  border-radius: 12px;
+  /* Rounded corners */
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  opacity: 0.8; /* Initial opacity */
+  opacity: 0.8;
+  /* Initial opacity */
   transition: opacity 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow for better visibility */
-  z-index: 1000; /* Ensure it's above other content */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  /* Optional shadow for better visibility */
+  z-index: 1000;
+  /* Ensure it's above other content */
   font-weight: bold;
-  border: none; /* Remove default button border */
+  border: none;
+  /* Remove default button border */
 }
 
 .scroll-to-top-btn:hover {
-  opacity: 1; /* Full opacity when hovered */
-  transform: translateY(-5px) translateX(-50%); /* Slightly raise the button on hover */
+  opacity: 1;
+  /* Full opacity when hovered */
+  transform: translateY(-5px) translateX(-50%);
+  /* Slightly raise the button on hover */
 }

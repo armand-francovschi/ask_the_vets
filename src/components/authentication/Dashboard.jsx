@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { getCurrentUser } from '../services/authService';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);

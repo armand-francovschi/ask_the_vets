@@ -1,16 +1,22 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Logout.css';
-const Logout = ({ onLogout }) => {
+
+const Logout = ({ logout }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Perform logout actions
-    onLogout(); // Notify the parent component to update state
-    navigate('/login'); // Redirect to the login page
-  }, [onLogout, navigate]);
+    {
+      logout(); // Call the logout function passed as a prop
+      navigate('/'); // Redirect to the homepage or index page
+    }
+  }, [logout, navigate]);
 
-  return null; // No UI needed for the logout action
+  return (
+    <div>
+      <p>You have been logged out successfully!</p>
+    </div>
+  );
 };
 
 export default Logout;

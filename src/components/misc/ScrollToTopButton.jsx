@@ -1,8 +1,11 @@
+// src/components/misc/ScrollToTopButton.jsx
 import React, { useState, useEffect } from 'react';
 import './ScrollToTopButton.css'; // Import the CSS file for styling
+import { useLocation } from 'react-router-dom'; // To track location changes
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const location = useLocation();
 
   // Function to handle scroll events
   const handleScroll = () => {
@@ -21,12 +24,18 @@ const ScrollToTopButton = () => {
     };
   }, []);
 
+  // Scroll to the top function
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth', // Smooth scroll to the top
     });
   };
+
+  // Scroll to top on location change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return (
     isVisible && (

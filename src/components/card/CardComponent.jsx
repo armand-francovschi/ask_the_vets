@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./CardComponent.css"; // Import the CSS file for styling
 import "../misc/Modal.css"; // Import the CSS file for the modal
 import { useNavigate } from "react-router-dom"; // Import useNavigate for React Router v6
+import { useAuth } from '../authentication/context/Context'; // Import useAuth from context
 
 const CardComponent = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false); // State to track scroll position
   const navigate = useNavigate(); // Initialize navigate for navigation
+  const { isLoggedIn } = useAuth(); // Get the isLoggedIn state from context
 
   // Modal content descriptions
   const modalDescriptions = {
@@ -69,6 +71,11 @@ const CardComponent = () => {
     };
   }, []);
 
+  // Function to handle authentication redirection
+  const handleAuthenticateClick = () => {
+    navigate("/login");  // Redirect to login if the user is not authenticated
+  };
+
   return (
     <div>
       {/* Scroll To Top Button */}
@@ -105,9 +112,12 @@ const CardComponent = () => {
             <h2>{cardTitles[modalContent]}</h2>
             <p>{modalDescriptions[modalContent]}</p>
 
-            {/* First button to navigate to the respective page */}
-            <button className="open-link" onClick={() => handleNavigate(modalContent)}>
-              Go to Page
+            {/* Button logic */}
+            <button
+              className={`open-link ${(!isLoggedIn && modalContent !== 3) ? 'green-button' : ''}`}
+              onClick={modalContent === 3 || isLoggedIn ? () => handleNavigate(modalContent) : handleAuthenticateClick}
+            >
+              {modalContent === 3 || isLoggedIn ? "Go to Page" : "Authenticate"} {/* If it's card 3 or logged in, allow navigation */}
             </button>
 
             {/* Second button to close the modal */}

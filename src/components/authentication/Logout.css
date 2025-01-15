@@ -1,18 +1,43 @@
 .logout-button {
-    background-color: #3ab2f9;
-    color: white;
-    font-size: 14px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin: 10px;
-    position: fixed;
-    top: 20px; /* Move to the top */
-    right: 20px; /* Align to the right */
-    z-index: 1000;
+  background-color: #3ab2f9;
+  color: white;
+  font-size: 14px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px;
+  position: fixed;
+  top: 20px;
+  /* Move to the top */
+  right: 20px;
+  /* Align to the right */
+  z-index: 1000;
 }
 
 .logout-button:hover {
-    background-color: #28666e;
+  background-color: #28666e;
+}
+
+.welcome-text {
+  color: #3ab2f9;
+  /* Blue color to match the button */
+  font-size: 32px;
+  /* Larger font size like an H2 */
+  font-weight: bold;
+  /* Bold text */
+  position: fixed;
+  /* Fixed position */
+  top: 20px;
+  /* Distance from the top */
+  left: 20px;
+  /* Distance from the left */
+  z-index: 1000;
+  /* Ensure it's above other content */
+}
+
+@media (max-width: 768px) {
+  .welcome-text {
+    visibility: hidden;
+  }
 }

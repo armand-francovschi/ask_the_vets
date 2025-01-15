@@ -1,32 +1,40 @@
-import React, { createContext, useContext, useState } from 'react';
-import { getCurrentUser, logout as logoutService } from '../../services/authService';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Create context
+// Create the AuthContext
 const AuthContext = createContext();
 
-// Auth provider component
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(getCurrentUser()); // Initialize user state from localStorage
-  const isLoggedIn = user !== null;  // Determine if the user is logged in
+export const useAuth = () => {
+  return useContext(AuthContext); // Hook to access auth context
+};
 
-  const login = (token) => {
-    setUser({ email: 'testuser@example.com' }); // Set user based on the token
-    localStorage.setItem("authToken", token);
+export const AuthProvider = ({ children }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Default state
+
+  // Effect to check if a user is already logged in (from localStorage)
+  useEffect(() => {
+    const token = localStorage.getItem('authToken'); // Check if there's a token in localStorage
+    if (token) {
+      setIsLoggedIn(true); // If the token exists, the user is logged in
+    }
+  }, []);
+
+  const login = () => {
+    setIsLoggedIn(true); // Set logged in to true
+    console.log('Logged in'); // For debugging
+    // Store user data or tokens in localStorage
+    localStorage.setItem('authToken', 'some-auth-token'); // Example token
   };
 
   const logout = () => {
-    setUser(null);
-    logoutService(); // Call the service to remove the token from localStorage
+    setIsLoggedIn(false); // Set logged in to false
+    console.log('Logged out'); // For debugging
+    // Clear user data or tokens
+    localStorage.removeItem('authToken'); // Remove token from localStorage
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, user, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
-};
-
-// Custom hook to use auth context
-export const useAuth = () => {
-  return useContext(AuthContext); // Make sure this is exported correctly
 };

@@ -9,11 +9,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  visibility: hidden; /* Initially hidden */
+  visibility: hidden;
+  /* Initially hidden */
 }
 
 .modal.show {
-  visibility: visible; /* Show the modal when the class 'show' is added */
+  visibility: visible;
+  /* Show the modal when the class 'show' is added */
 }
 
 .modal-content {
@@ -26,25 +28,30 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center; /* Center the text horizontally */
+  text-align: center;
+  /* Center the text horizontally */
 }
 
 .modal-content h2 {
   font-size: 28px;
   color: #333;
-  font-weight: 600; /* Make the title bold */
-  margin-bottom: 20px; /* Add space below the title */
+  font-weight: 600;
+  /* Make the title bold */
+  margin-bottom: 20px;
+  /* Add space below the title */
 }
 
 .modal-content p {
   font-size: 18px;
   color: #555;
   line-height: 1.6;
-  margin-bottom: 20px; /* Add space below the paragraph */
+  margin-bottom: 20px;
+  /* Add space below the paragraph */
 }
 
 /* Modal Buttons */
-.open-link, .close {
+.open-link,
+.close {
   padding: 10px 20px;
   margin: 10px 0;
   border: none;
@@ -74,7 +81,9 @@
 }
 
 /* Ensure buttons are centered */
-.modal-content .open-link, .modal-content .close {
+.modal-content .open-link,
+.modal-content .close {
   width: auto;
-  align-self: center; /* Center the buttons */
+  align-self: center;
+  /* Center the buttons */
 }
