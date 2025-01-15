@@ -58,7 +58,7 @@ const FixedBottom = () => {
 
         {/* Footer Bottom */}
         <div className="fixed-bottom-bottom">
-          <p>&copy; 2025 Ask the Vets</p>
+          <p> ~ </p>
         </div>
       </div>
     </div>

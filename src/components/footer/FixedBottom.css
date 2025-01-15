@@ -113,6 +113,8 @@ a {
   text-align: center;
   margin-top: 30px;
 }
+
+
 /* Mobile adjustments */
 @media screen and (max-width: 768px) {
   .fixed-bottom-content {
@@ -159,6 +161,9 @@ a {
   /* Adjust contact address positioning */
   .fixed-bottom-bottom {
     font-size: 14px;
-    text-align: center;
+    text-align: left; /* Align copyright text to the left */
+    width: 100%; /* Ensure it takes up full width */
+    padding-left: 10px; /* Add some padding to the left */
+    margin-top: 10px; /* Add space at the top */
   }
 }
