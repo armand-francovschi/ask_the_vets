@@ -113,7 +113,6 @@ a {
   text-align: center;
   margin-top: 30px;
 }
-
 /* Mobile adjustments */
 @media screen and (max-width: 768px) {
   .fixed-bottom-content {
@@ -124,6 +123,7 @@ a {
   .fixed-bottom.show {
     bottom: -1vh; /* Footer slides up when it is visible */
   }
+
   .fixed-bottom-left, .fixed-bottom-right {
     flex: none;
     width: 100%; /* Take full width on mobile */
@@ -143,9 +143,22 @@ a {
     height: 18px;
   }
 
+  /* Adjust social links list */
+  .social-links {
+    display: flex;
+    flex-direction: column; /* Stack social links vertically */
+    align-items: center; /* Center-align the social links */
+    padding: 0;
+    margin: 0;
+  }
+
+  .social-links li {
+    margin: 5px 0; /* Add space between items */
+  }
+
   /* Adjust contact address positioning */
   .fixed-bottom-bottom {
     font-size: 14px;
     text-align: center;
-    }
+  }
 }
