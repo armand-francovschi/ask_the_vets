@@ -1,0 +1,39 @@
+/* Style for BlogArticle page */
+.blog-article-container {
+    background-color: #fff;
+    color: #000; /* Set the text color to black */
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    line-height: 1.6;
+  }
+  
+ 
+
+  .blog-article-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .blog-article-container p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+  
+  .back-to-blogs-btn {
+    background-color: #3AB2F9; /* Blue background */
+    color: #ffffff; /* White text */
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-to-blogs-btn:hover {
+    background-color: #2596be; /* Darker shade of blue when hovered */
+  }
+  
