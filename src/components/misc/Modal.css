@@ -1,69 +1,80 @@
+/* Modal Styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden; /* Initially hidden */
+}
 
-  /* Modal Styling */
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden; /* Initially hidden */
-  }
-  
-  .modal.show {
-    visibility: visible; /* Show the modal when the class 'show' is added */
-  }
-  
-  .modal-content {
-    background-color: white;
-    padding: 40px;
-    border-radius: 10px;
-    width: 60%;
-    max-width: 800px;
-  }
-  
-  .modal-content h2 {
-    font-size: 28px;
-    color: #333;
-    position: center;
-    align-items: center;
-    font-weight: 600; /* Make the title bold */
-  }
-  
-  .modal-content p {
-    font-size: 18px;
-    color: #555;
-    line-height: 1.6;
-  }
-  
-  /* Modal Buttons */
-  .open-link, .close {
-    padding: 10px 20px;
-    margin: 10px 0;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .open-link {
-    background-color: #3AB2F9;
-    color: white;
-  }
-  
-  .open-link:hover {
-    background-color: #287fb7;
-  }
-  
-  .close {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  .close:hover {
-    background-color: #c1351d;
-  }
+.modal.show {
+  visibility: visible; /* Show the modal when the class 'show' is added */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  width: 60%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Center the text horizontally */
+}
+
+.modal-content h2 {
+  font-size: 28px;
+  color: #333;
+  font-weight: 600; /* Make the title bold */
+  margin-bottom: 20px; /* Add space below the title */
+}
+
+.modal-content p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px; /* Add space below the paragraph */
+}
+
+/* Modal Buttons */
+.open-link, .close {
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+.open-link {
+  background-color: #3AB2F9;
+  color: white;
+}
+
+.open-link:hover {
+  background-color: #287fb7;
+}
+
+.close {
+  background-color: #f44336;
+  color: white;
+}
+
+.close:hover {
+  background-color: #c1351d;
+}
+
+/* Ensure buttons are centered */
+.modal-content .open-link, .modal-content .close {
+  width: auto;
+  align-self: center; /* Center the buttons */
+}
