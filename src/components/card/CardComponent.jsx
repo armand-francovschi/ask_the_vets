@@ -59,7 +59,7 @@ const CardComponent = () => {
           >
             {/* Dynamically set the image source */}
             <img
-              src={`assets/card_${key}.jpg`} // Dynamically load the image based on card number
+              src={`assets/images/card_selections/card_${key}.jpg`} // Dynamically load the image based on card number
               alt={cardTitles[key]}
               className="card-image"
             />

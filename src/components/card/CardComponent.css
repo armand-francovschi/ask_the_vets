@@ -1,62 +1,89 @@
-/* Full-width display of cards */
 /* Card Container */
 .card-container {
-    display: flex; /* Flexbox layout for the cards */
-    justify-content: center; /* Center cards horizontally */
-    align-items: center; /* Center cards vertically */
-    width: 100%; /* Full width of the screen */
-    padding: 20px ; /* Some padding around the cards */
-    box-sizing: border-box; /* Include padding in the width calculation */
-    margin: 0; /* No margin */
-    gap: 20px; /* Add space between cards */
+  display: flex; /* Flexbox layout for the cards */
+  justify-content: center; /* Center cards horizontally */
+  align-items: center; /* Center cards vertically */
+  width: 100%; /* Full width of the screen */
+  padding: 20px; /* Some padding around the cards */
+  box-sizing: border-box; /* Include padding in the width calculation */
+  margin: 0; /* No margin */
+  gap: 20px; /* Add space between cards */
+}
+
+/* Individual card styling */
+.card {
+  background-color: white; /* White background */
+  border-radius: 12px; /* Rounded corners */
+  width: 22%; /* Base width of the cards */
+  min-width: 250px; /* Ensure they don't shrink too much */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Image above text by default */
+  justify-content: space-between;
+  padding: 20px;
+  height: 500px; /* Fixed height for larger screens */
+  overflow: hidden; /* Ensure content stays within card bounds */
+  position: relative; /* For positioning text inside card */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth scaling and filter transition */
+  transform-origin: center center; /* Keep scaling centered */
+}
+
+/* Image inside the card */
+.card-image {
+  width: 100%; /* Take full width of the card */
+  aspect-ratio: 4 / 3; /* Maintain a 4:3 aspect ratio (or choose another ratio as needed) */
+  object-fit: cover; /* Ensure the image covers the container without distortion */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Prevent content overflow */
+  transition: transform 0.3s ease; /* Smooth transform transition for the image */
+}
+
+/* Card text below image */
+.card-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: black; /* Black color for text */
+  margin-top: 15px;
+}
+
+/* Hover effect: Expand image and shrink other cards */
+.card:hover {
+  transform: scale(1.1); /* Slightly enlarge the card */
+}
+
+.card:hover .card-image {
+  transform: scale(1); /* Expand the image */
+}
+
+/* Card styles for non-hovered cards (they shrink a bit) */
+.card-container .card:not(:hover) {
+  transform: scale(0.95); /* Slightly shrink non-hovered cards */
+}
+
+/* Responsive Design: Stack cards in a column on smaller screens */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column; /* Stack cards in a column */
+    align-items: stretch; /* Allow cards to stretch across full width */
   }
-  
-  /* Individual card styling */
+
   .card {
-    background-color: white; /* White background */
-    border-radius: 12px; /* Rounded corners */
-    width: 22%; /* Base width of the cards */
-    min-width: 250px; /* Ensure they don't shrink too much */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, width 0.3s ease; /* Smooth transition */
-    cursor: pointer;
-    text-align: center;
+    width: 100%; /* Make cards take full width of the screen */
+    min-width: unset; /* Remove minimum width constraint */
+    height: 40%; /* Let height adjust to content */
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px;
-    height: 600px; /* Fixed height for all cards */
-    transition: all 0.3s ease; /* Smooth transition for all properties */
+    flex-direction: column; /* Ensure image is always above text */
   }
-  
-  /* Image inside the card */
+
   .card-image {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Ensure image takes full width of the card */
+    height: 40%; /* Maintain aspect ratio */
     border-radius: 8px;
   }
-  
-  /* Card text below image */
+
   .card-text {
-    font-size: 18px;
-    font-weight: bold;
-    color: black; /* Blue color for text */
-    margin-top: 15px;
-    transition: color 0.3s ease; /* Smooth color transition on hover */
+    margin-top: 10px; /* Add spacing between image and text */
+    font-size: 16px; /* Adjust font size for smaller screens */
   }
-  
-  /* Hover effect on the cards */
-  .card:hover {
-    transform: scale(1.3); /* Expand the hovered card */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
-    width: 80%; /* Increase the width of the hovered card */
-    z-index: 10; /* Bring the hovered card to the front */
-  }
-  
-  /* Optional: Make other cards shrink smoothly when one is hovered */
-  .card-container .card:not(:hover) {
-    width: 16%; /* Shrink other cards slightly */
-    transition: width 0.3s ease; /* Smooth transition for shrinking */
-    transform: scale(1.0) ease; /* Expand the hovered card */
-  }
-  
+}
