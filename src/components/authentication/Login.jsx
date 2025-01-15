@@ -1,32 +1,33 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Use useNavigate
-import { LOCAL_USER } from '../services/authService';
+import { useNavigate } from 'react-router-dom'; 
+import { useAuth } from './context/Context';  // Import the useAuth hook for context
 import './Login.css';
 
-const Login = ({ onLogin }) => {
+const Login = () => {
+  const { login } = useAuth(); // Use login function from context
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // Use the useNavigate hook
+  const navigate = useNavigate(); // useNavigate for redirecting after login
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
-    // Validate credentials against LOCAL_USER
-    if (email === LOCAL_USER.email && password === LOCAL_USER.password) {
-      onLogin(); // Update parent state to mark user as logged in
+
+    // Simulate validation of credentials (You could use the context or local storage)
+    if (email === "test@example.com" && password === "password123") {
+      login(); // Use context's login method to handle login
       navigate('/'); // Redirect to the homepage after successful login
     } else {
-      setError('Invalid email or password'); // Show error message for invalid credentials
+      setError('Invalid email or password'); // Set error message if login fails
     }
   };
-  
+
   return (
     <div className="login-container">
       <h2>Login</h2>
-      {error && <p>{error}</p>}
+      {error && <p className="error-message">{error}</p>}  {/* Styled error message */}
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="input-group">
           <label>Email:</label>
           <input
             type="email"
@@ -35,7 +36,7 @@ const Login = ({ onLogin }) => {
             required
           />
         </div>
-        <div>
+        <div className="input-group">
           <label>Password:</label>
           <input
             type="password"
@@ -44,12 +45,10 @@ const Login = ({ onLogin }) => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className="login-button">Login</button>
       </form>
     </div>
   );
-  
 };
 
 export default Login;
-``
