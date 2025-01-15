@@ -2,10 +2,11 @@
 
 .scroll-to-top-btn {
   position: fixed;
-  bottom: 30px; /* Position it 30px from the bottom */
-  left: 30px; /* Position it 30px from the left */
+  top: 30px; /* Position it 30px from the top */
+  left: 50%; /* Horizontally center the button */
+  transform: translateX(-50%); /* Adjust position to truly center it */
   background-color: #3AB2F9; /* Set background color to #3AB2F9 */
-  color: #000000; /* White arrow color */
+  color: #000000; /* Text color */
   font-size: 30px; /* Larger font size for the arrow */
   width: 60px; /* Button width */
   height: 60px; /* Button height */
@@ -24,5 +25,5 @@
 
 .scroll-to-top-btn:hover {
   opacity: 1; /* Full opacity when hovered */
-  transform: translateY(-5px); /* Slightly raise the button on hover */
+  transform: translateY(-5px) translateX(-50%); /* Slightly raise the button on hover */
 }

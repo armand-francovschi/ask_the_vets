@@ -1,0 +1,151 @@
+/* Footer button to trigger the popup */
+.contact-us-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #3AB2F9;
+  color: white;
+  font-size: 16px;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 20; /* Ensure the button is on top */
+}
+
+.contact-us-button:hover {
+  background-color: #28666e;
+}
+
+/* Footer styles */
+.fixed-bottom {
+  background-color: #3AB2F9;
+  color: black;
+  padding: 20px 20px;
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: fixed;
+  bottom: -100%; /* Initially hidden, below the screen */
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  box-sizing: border-box;
+  transition: bottom 0.5s ease; /* Smooth transition for the bottom position */
+}
+
+.fixed-bottom.show {
+  bottom: -1vh; /* Footer slides up when it is visible */
+}
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.fixed-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.fixed-bottom-left, .fixed-bottom-right {
+  display: flex;
+  flex: 1; /* Allow both sections to take up space */
+  width: 50%;
+}
+
+.fixed-bottom-right {
+  justify-content: flex-end; /* Align social links to the right */
+}
+
+.fixed-bottom h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.fixed-bottom p, .fixed-bottom ul {
+  margin: 5px 0;
+  text-align: center; /* Ensure address is also centered */
+}
+
+/* Social links styles */
+.social-links {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-links li {
+  margin: 0 10px;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.social-links a:hover {
+  color: white;
+}
+
+.social-links img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.fixed-bottom-bottom {
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+  .fixed-bottom-content {
+    flex-direction: column; /* Stack the left and right sections vertically */
+    text-align: center; /* Center-align content */
+  }
+
+  .fixed-bottom.show {
+    bottom: -1vh; /* Footer slides up when it is visible */
+  }
+  .fixed-bottom-left, .fixed-bottom-right {
+    flex: none;
+    width: 100%; /* Take full width on mobile */
+    margin: 1px bottom; /* Add space between sections */
+    justify-content: center; /* Center the content */
+  }
+
+  /* Center the contact information title and address */
+  .fixed-bottom-left h4,
+  .fixed-bottom-left p {
+    text-align: center;
+  }
+
+  /* Adjust icon size for mobile */
+  .social-links img {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Adjust contact address positioning */
+  .fixed-bottom-bottom {
+    font-size: 14px;
+    text-align: center;
+    }
+}

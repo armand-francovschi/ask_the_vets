@@ -104,9 +104,6 @@ const CardComponent = () => {
             {/* Dynamically set the <h2> text based on the clicked card */}
             <h2>{cardTitles[modalContent]}</h2>
             <p>{modalDescriptions[modalContent]}</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel mauris felis. Curabitur non elit urna. Vivamus vel nisl id elit volutpat sollicitudin. Integer accumsan, ipsum in luctus tincidunt, nisl libero pharetra metus, sit amet laoreet ante eros ac lorem.
-            </p>
 
             {/* First button to navigate to the respective page */}
             <button className="open-link" onClick={() => handleNavigate(modalContent)}>
