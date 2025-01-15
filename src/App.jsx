@@ -7,7 +7,6 @@ import Blog from './components/blog/Blog'; // The Blog component
 import Agenda from './components/agenda/Agenda'; // The Agenda component
 import ScrollToTopButton from './components/misc/ScrollToTopButton';
 import BlogArticle from './components/blog/BlogArticle';
-import './components/misc/modal.css';
 
 function ScrollToTop() {
   const location = useLocation();

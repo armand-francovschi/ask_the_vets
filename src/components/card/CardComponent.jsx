@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./CardComponent.css"; // Import the CSS file for styling
-import "../misc/modal.css"; // Import the CSS file for the modal
+import "../misc/Modal.css"; // Import the CSS file for the modal
 import { useNavigate } from "react-router-dom"; // Import useNavigate for React Router v6
 
 const CardComponent = () => {
