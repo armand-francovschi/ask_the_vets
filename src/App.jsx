@@ -35,7 +35,7 @@ function App() {
           </header>
         </div>
         <main>
-          <ScrollToTop /> 
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<CardComponent />} />
             <Route path="/consultatii" element={<Consultatii />} />

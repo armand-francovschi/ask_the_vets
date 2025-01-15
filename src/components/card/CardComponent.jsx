@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CardComponent.css"; // Import the CSS file for styling
 import "../misc/modal.css"; // Import the CSS file for the modal
 import { useNavigate } from "react-router-dom"; // Import useNavigate for React Router v6
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate for React 
 const CardComponent = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
+  const [isScrolled, setIsScrolled] = useState(false); // State to track scroll position
   const navigate = useNavigate(); // Initialize navigate for navigation
 
   // Modal content descriptions
@@ -48,8 +49,36 @@ const CardComponent = () => {
     setModalContent(null);
   };
 
+  // Scroll event listener to track when the page is scrolled
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if the page is scrolled more than 100px, and hide the button when at the top
+      if (window.scrollY > 100) {
+        setIsScrolled(true); // Show the button
+      } else {
+        setIsScrolled(false); // Hide the button
+      }
+    };
+
+    // Add event listener on mount
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup the event listener on unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div>
+      {/* Scroll To Top Button */}
+      <div
+        className={`scroll-to-top-btn ${isModalOpen || !isScrolled ? "hidden" : ""}`} // Hide button if modal is open or page is not scrolled
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        ↑
+      </div>
+
       <div className="card-container">
         {Object.keys(cardTitles).map((key) => (
           <div
